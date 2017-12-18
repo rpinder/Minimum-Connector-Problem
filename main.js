@@ -31,6 +31,12 @@ class Node {
     }
 }
 
+function drawNodes() {
+    for (var i = 0; i < nodes.length; i++) {
+        nodes[i].draw();
+    }    
+}
+
 function printMousePos(event) {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, width, height);
@@ -44,11 +50,18 @@ function printMousePos(event) {
 
     console.log ("||| " + posX + " " + posY + " |||");
 
-    nodes.push(new Node(posX, posY));
-
     for (var i = 0; i < nodes.length; i++) {
-        nodes[i].draw();
+        if (posX > nodes[i].posX - 10 && posX < nodes[i].posX + 10 &&
+            posY > nodes[i].posY - 10 && posY < nodes[i].posY + 10) {
+            nodes.splice(i, 1);
+            drawNodes();
+            return;
+        }
     }
+
+    nodes.push(new Node(posX, posY));
+    drawNodes();
+
 };
 
     
