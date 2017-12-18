@@ -55,6 +55,7 @@ function printMousePos(event) {
             posY > nodes[i].posY - 10 && posY < nodes[i].posY + 10) {
             nodes.splice(i, 1);
             drawNodes();
+            ctx.fillText("nodes: " + (nodes.length), 5, 150);
             return;
         }
     }
@@ -62,8 +63,9 @@ function printMousePos(event) {
     nodes.push(new Node(posX, posY));
     drawNodes();
 
-};
+    ctx.fillText("nodes: " + (nodes.length), 5, 150);
 
+};
     
 
    
