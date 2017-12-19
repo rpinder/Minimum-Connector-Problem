@@ -14,6 +14,9 @@ ctx.fillRect(0, 0, width, height);
 
 var nodes = [];
 var total_distance = 0;
+ctx.fillStyle = "black";
+ctx.font = "20px Arial";
+ctx.fillText("Minimum total edge weight: " + Math.round(total_distance), 5, 25);
 
 var diagnostic = 0;
 
