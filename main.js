@@ -48,6 +48,10 @@ function drawLine(obj1, obj2) {
     ctx.moveTo(obj1.posX, obj1.posY);
     ctx.lineTo(obj2.posX, obj2.posY);
     ctx.stroke();
+
+    var midpoint = [(obj1.posX + obj2.posX) / 2, (obj1.posY + obj2.posY) / 2];
+    ctx.font = "15px Arial";
+    ctx.fillText(Math.floor(distanceBetween(obj1, obj2)), midpoint[0], midpoint[1]);
 }
 
 function printMousePos(event) {
@@ -69,7 +73,6 @@ function printMousePos(event) {
             nodes.splice(i, 1);
             drawNodes();
             ctx.fillText("nodes: " + (nodes.length), 5, 150);
-            ctx.fillText("Distance: " + distanceBetween(nodes[0], nodes[1]), 5, 200);
             drawLine(nodes[0], nodes[1]);
             return;
         }
@@ -79,9 +82,7 @@ function printMousePos(event) {
     drawNodes();
 
     ctx.fillText("nodes: " + (nodes.length), 5, 150);
-    ctx.fillText("Distance: " + distanceBetween(nodes[0], nodes[1]), 5, 200);
     drawLine(nodes[0], nodes[1]);
-
 };
     
 
