@@ -13,6 +13,7 @@ ctx.fillStyle = 'white';
 ctx.fillRect(0, 0, width, height);
 
 var nodes = [];
+var total_distance = 0;
 
 var diagnostic = 0;
 
@@ -48,9 +49,12 @@ function drawLine(obj1, obj2) {
     ctx.stroke();
 
     var midpoint = [(obj1.posX + obj2.posX) / 2, (obj1.posY + obj2.posY) / 2];
+    var line_distance = distanceBetween(obj1, obj2);
+    total_distance += line_distance;
+    
     ctx.font = "15px Arial";
     ctx.textAlign = "center";
-    ctx.fillText(Math.floor(distanceBetween(obj1, obj2)), midpoint[0], midpoint[1]);
+    ctx.fillText(Math.round(line_distance), midpoint[0], midpoint[1]);
     ctx.textAlign = "left";
 }
 
@@ -104,6 +108,8 @@ function printMousePos(event) {
     var posX = event.pageX;
     var posY = event.pageY;
 
+    total_distance = 0;
+
     for (var i = 0; i < nodes.length; i++) {
         if (posX > nodes[i].posX - 10 && posX < nodes[i].posX + 10 &&
             posY > nodes[i].posY - 10 && posY < nodes[i].posY + 10) {
@@ -124,6 +130,9 @@ function printMousePos(event) {
         prim();
         drawRoute();
     }
+
+    ctx.font = "20px Arial";
+    ctx.fillText("Minimum total edge weight: " + Math.round(total_distance), 5, 25);
     
     if (diagnostic) diagnosticText();
 };
