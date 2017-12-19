@@ -71,17 +71,20 @@ function prim() {
     var next_edge = [0, 0];
     edges = [];
 
-    for (var i = 0; i < included_nodes.length; i++) {
-        for (var j = 0; j < not_included_nodes.length; j++) {
-            if (distanceBetween(included_nodes[i], not_included_nodes[j]) < minimum_distance) {
-                next_edge = [i, j];
+    for (var x = not_included_nodes.length; x > 0; x--) {
+
+        for (var i = 0; i < included_nodes.length; i++) {
+            for (var j = 0; j < not_included_nodes.length; j++) {
+                if (distanceBetween(included_nodes[i], not_included_nodes[j]) < minimum_distance) {
+                    next_edge = [i, j];
+                }
             }
         }
-    }
 
-    edges.push([included_nodes[next_edge[0]], not_included_nodes[next_edge[1]]]);
-    included_nodes.push(not_included_nodes[next_edge[1]]);
-    not_included_nodes.splice(next_edge[1], 1);
+        edges.push([included_nodes[next_edge[0]], not_included_nodes[next_edge[1]]]);
+        included_nodes.push(not_included_nodes[next_edge[1]]);
+        not_included_nodes.splice(next_edge[1], 1);
+    }
 }
 
 function drawRoute() {
