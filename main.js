@@ -50,7 +50,9 @@ function drawLine(obj1, obj2) {
 
     var midpoint = [(obj1.posX + obj2.posX) / 2, (obj1.posY + obj2.posY) / 2];
     ctx.font = "15px Arial";
+    ctx.textAlign = "center";
     ctx.fillText(Math.floor(distanceBetween(obj1, obj2)), midpoint[0], midpoint[1]);
+    ctx.textAlign = "left";
 }
 
 function diagnosticText() {
