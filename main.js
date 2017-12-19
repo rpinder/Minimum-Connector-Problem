@@ -14,7 +14,7 @@ ctx.fillRect(0, 0, width, height);
 
 var nodes = [];
 
-var diagnostic = 1;
+var diagnostic = 0;
 
 class Node {
     constructor(x, y) {
