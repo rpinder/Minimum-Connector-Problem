@@ -37,7 +37,6 @@ function drawNodes() {
 }
 
 function distanceBetween(obj1, obj2) {
-    // returns distance between two nodes
     return Math.sqrt((obj2.posX - obj1.posX)**2 + (obj2.posY - obj1.posY)**2);
 }
 
@@ -65,17 +64,21 @@ function diagnosticText() {
 
 function prim() {
     var included_nodes = [nodes[0]]
-    var not_included_nodes = nodes.slice();
+    var not_included_nodes = [];
+    for (var i = 0; i < nodes.length; i++) {
+        not_included_nodes.push(nodes[i])
+    }
     not_included_nodes.splice(0, 1);
-    var minimum_distance = distanceBetween(nodes[0], nodes[1]);
     var next_edge = [0, 0];
     edges = [];
 
-    for (var x = not_included_nodes.length; x > 0; x--) {
-
+    while (not_included_nodes.length > 0) {
+        var minimum_distance = 1*10**10;
         for (var i = 0; i < included_nodes.length; i++) {
             for (var j = 0; j < not_included_nodes.length; j++) {
-                if (distanceBetween(included_nodes[i], not_included_nodes[j]) < minimum_distance) {
+                var new_distance = distanceBetween(included_nodes[i], not_included_nodes[j]);
+                if (new_distance < minimum_distance) {
+                    minimum_distance = new_distance;
                     next_edge = [i, j];
                 }
             }
