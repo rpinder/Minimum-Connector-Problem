@@ -42,6 +42,14 @@ function distanceBetween(obj1, obj2) {
     return Math.sqrt((obj2.posX - obj1.posX)**2 + (obj2.posY - obj1.posY)**2);
 }
 
+function drawLine(obj1, obj2) {
+    // Draws a line from obj1 to obj2
+    ctx.beginPath();
+    ctx.moveTo(obj1.posX, obj1.posY);
+    ctx.lineTo(obj2.posX, obj2.posY);
+    ctx.stroke();
+}
+
 function printMousePos(event) {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, width, height);
@@ -61,6 +69,8 @@ function printMousePos(event) {
             nodes.splice(i, 1);
             drawNodes();
             ctx.fillText("nodes: " + (nodes.length), 5, 150);
+            ctx.fillText("Distance: " + distanceBetween(nodes[0], nodes[1]), 5, 200);
+            drawLine(nodes[0], nodes[1]);
             return;
         }
     }
@@ -70,6 +80,7 @@ function printMousePos(event) {
 
     ctx.fillText("nodes: " + (nodes.length), 5, 150);
     ctx.fillText("Distance: " + distanceBetween(nodes[0], nodes[1]), 5, 200);
+    drawLine(nodes[0], nodes[1]);
 
 };
     
