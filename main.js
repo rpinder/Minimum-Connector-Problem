@@ -14,6 +14,8 @@ ctx.fillRect(0, 0, width, height);
 
 var nodes = [];
 
+var diagnostic = 1;
+
 class Node {
     constructor(x, y) {
         this.posX = x;
@@ -51,13 +53,18 @@ function drawLine(obj1, obj2) {
     ctx.fillText(Math.floor(distanceBetween(obj1, obj2)), midpoint[0], midpoint[1]);
 }
 
+function diagnosticText() {
+    ctx.font = '30px Arial';
+    ctx.fillText("clientX: " + event.clientX, 5, 50);
+    ctx.fillText("clientY: " + event.clientY, 5, 100);
+    ctx.fillText("nodes: " + (nodes.length), 5, 150);
+
+}
+
 function printMousePos(event) {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, width, height);
     ctx.fillStyle = 'black';
-    ctx.font = '30px Arial';
-    ctx.fillText("clientX: " + event.clientX, 5, 50);
-    ctx.fillText("clientY: " + event.clientY, 5, 100);
 
     var posX = event.pageX;
     var posY = event.pageY;
@@ -67,8 +74,8 @@ function printMousePos(event) {
             posY > nodes[i].posY - 10 && posY < nodes[i].posY + 10) {
             nodes.splice(i, 1);
             drawNodes();
-            ctx.fillText("nodes: " + (nodes.length), 5, 150);
-            drawLine(nodes[0], nodes[1]);
+            if (nodes.length > 1) drawLine(nodes[0], nodes[1]);
+            if (diagnostic) diagnosticText();
             return;
         }
     }
@@ -76,8 +83,8 @@ function printMousePos(event) {
     nodes.push(new Node(posX, posY));
     drawNodes();
 
-    ctx.fillText("nodes: " + (nodes.length), 5, 150);
-    drawLine(nodes[0], nodes[1]);
+    if (nodes.length > 1) drawLine(nodes[0], nodes[1]);
+    if (diagnostic) diagnosticText();
 };
     
 
