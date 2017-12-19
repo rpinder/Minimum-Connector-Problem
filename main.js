@@ -18,12 +18,9 @@ class Node {
     constructor(x, y) {
         this.posX = x;
         this.posY = y;
-
-        console.log("created new node");
     }
 
     draw() {
-        console.log("Drawing " + this.posX + " " + this.posY)
         ctx.fillStyle = 'black';
         ctx.beginPath();
         ctx.arc(this.posX, this.posY, 10, 0, 2*Math.PI);
@@ -64,8 +61,6 @@ function printMousePos(event) {
 
     var posX = event.pageX;
     var posY = event.pageY;
-
-    console.log ("||| " + posX + " " + posY + " |||");
 
     for (var i = 0; i < nodes.length; i++) {
         if (posX > nodes[i].posX - 10 && posX < nodes[i].posX + 10 &&
