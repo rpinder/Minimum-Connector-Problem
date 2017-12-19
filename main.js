@@ -37,6 +37,11 @@ function drawNodes() {
     }    
 }
 
+function distanceBetween(obj1, obj2) {
+    // returns distance between two nodes
+    return Math.sqrt((obj2.posX - obj1.posX)**2 + (obj2.posY - obj1.posY)**2);
+}
+
 function printMousePos(event) {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, width, height);
@@ -64,6 +69,7 @@ function printMousePos(event) {
     drawNodes();
 
     ctx.fillText("nodes: " + (nodes.length), 5, 150);
+    ctx.fillText("Distance: " + distanceBetween(nodes[0], nodes[1]), 5, 200);
 
 };
     
