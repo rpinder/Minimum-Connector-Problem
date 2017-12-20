@@ -1,2 +1,2 @@
 # Minimum-Connector-Problem
-A website which solves the minimum total length of a connected graph
+A website which calculates the minimum total edge weight of a network assuming all nodes have a non-infinite distance edge to all other nodes.
