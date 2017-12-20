@@ -1,7 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:200');
+
+
 html, body {
     width: 100%;
     height: 100%;
     margin: 0px;
     overflow: hidden;
+}
+
+#github {
+    position: absolute;
+    padding: 10px;
+    margin-top: -60px;
+    z-index: 1;
+    font-family: 'Nunito', sans-serif;
+}
+
+#github a {
+    text-decoration: none;
+    color: black;
+    
 }
 
