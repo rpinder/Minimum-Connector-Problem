@@ -103,6 +103,19 @@ function drawRoute() {
     }
 }
 
+function post_click_actions() {
+    drawNodes();
+    if (nodes.length > 1) {
+        prim();
+        drawRoute();
+    }
+
+    ctx.font = "20px Arial";
+    ctx.fillText("Minimum total edge weight: " + Math.round(total_distance), 5, 25);
+    
+    if (diagnostic) diagnosticText();
+}
+
 function printMousePos(event) {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, width, height);
@@ -117,27 +130,13 @@ function printMousePos(event) {
         if (posX > nodes[i].posX - 10 && posX < nodes[i].posX + 10 &&
             posY > nodes[i].posY - 10 && posY < nodes[i].posY + 10) {
             nodes.splice(i, 1);
-            drawNodes();
-            if (nodes.length > 1) {
-                prim();
-                drawRoute();
-            }
-            if (diagnostic) diagnosticText();
+            post_click_actions();
             return;
         }
     }
 
     nodes.push(new Node(posX, posY));
-    drawNodes();
-    if (nodes.length > 1) {
-        prim();
-        drawRoute();
-    }
-
-    ctx.font = "20px Arial";
-    ctx.fillText("Minimum total edge weight: " + Math.round(total_distance), 5, 25);
-    
-    if (diagnostic) diagnosticText();
+    post_click_actions();
 };
     
 
