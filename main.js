@@ -14,9 +14,11 @@ ctx.fillRect(0, 0, width, height);
 
 var nodes = [];
 var total_distance = 0;
+
 ctx.fillStyle = "black";
 ctx.font = "20px Arial";
-ctx.fillText("Minimum total edge weight: " + Math.round(total_distance), 5, 25);
+ctx.textAlign = "center";
+ctx.fillText("Left click to create node and left click again to destroy node", width/2, height/2);
 
 var diagnostic = 0;
 
