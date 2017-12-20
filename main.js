@@ -123,21 +123,22 @@ function printMousePos(event) {
     ctx.fillRect(0, 0, width, height);
     ctx.fillStyle = 'black';
 
-    var posX = event.pageX;
-    var posY = event.pageY;
+    var mouse = {
+        posX: event.pageX,
+        posY: event.pageY
+    };
 
     total_distance = 0;
 
     for (var i = 0; i < nodes.length; i++) {
-        if (posX > nodes[i].posX - 10 && posX < nodes[i].posX + 10 &&
-            posY > nodes[i].posY - 10 && posY < nodes[i].posY + 10) {
+        if (distanceBetween(mouse, nodes[i]) <= 10) {
             nodes.splice(i, 1);
             post_click_actions();
             return;
         }
     }
 
-    nodes.push(new Node(posX, posY));
+    nodes.push(new Node(mouse.posX, mouse.posY));
     post_click_actions();
 };
     
