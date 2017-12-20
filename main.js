@@ -18,7 +18,7 @@ var total_distance = 0;
 ctx.fillStyle = "black";
 ctx.font = "20px Arial";
 ctx.textAlign = "center";
-ctx.fillText("Left click to create node and left click again to destroy node", width/2, height/2);
+ctx.fillText("Left click to create node and left click again to destroy node.", width/2, height/2);
 
 var diagnostic = 0;
 
