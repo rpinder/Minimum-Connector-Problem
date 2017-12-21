@@ -1,4 +1,4 @@
-document.addEventListener("click", printMousePos);
+document.addEventListener("click", update);
 
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext("2d");
@@ -118,7 +118,7 @@ function post_click_actions() {
     if (diagnostic) diagnosticText();
 }
 
-function printMousePos(event) {
+function update(event) {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, width, height);
     ctx.fillStyle = 'black';
